@@ -2,6 +2,15 @@
 
 A script for creating long dachshund 3D models.
 
+## Usage
+
+Run the script with the stretch factor and output path.
+This command make the dachshund body 2x longer and writes the result to `dachshung-long.obj`.
+
+```sh
+python3.10 stretch.py -s 2 -o dachshund-long.obj
+```
+
 ## Development
 
 Before you start, please install [pre-commit hooks](https://pre-commit.com/) with
