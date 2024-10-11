@@ -67,7 +67,11 @@ def load_config(config_path: pathlib.Path) -> ModelConfig:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Make a long dachshund OBJ model")
     parser.add_argument(
-        "-s", "--stretch", default=2.0, help="The stretch factor. Default: %(default)s"
+        "-s",
+        "--stretch",
+        type=float,
+        default=2.0,
+        help="The stretch factor. Default: %(default)s",
     )
     parser.add_argument(
         "-o", "--output", type=pathlib.Path, required=True, help="The output OBJ file"
