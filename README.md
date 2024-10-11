@@ -34,7 +34,7 @@ To make stretching smooth we can use a cubic function with the following constra
 - the points at the bedy boundaries should have the same coordinates as if they're stretched linearly,
 - the derivative of the mapping function at the body boundaries should be equal to 1 to make the function smooth.
 
-The cubic function fits perfectly well (even though it's not guaranteed the the average curvature will be minimal).
+The cubic function fits perfectly well (even though it's not guaranteed that the average curvature will be minimal).
 It has enough degrees of freedom to constrain both the points and angles.
 
 To get the coefficients of the cubic polynomial $a x^3 + b x^2 + c x + d$ we have to solve a system of linear equations:
