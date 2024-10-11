@@ -52,8 +52,9 @@ def process_line(line: str, config: ModelConfig, stretch_factor: float) -> str:
 
 def make_long_model(base_model: str, config: ModelConfig, stretch_factor: float) -> str:
     output = []
-    for line in base_model:
-        output.append(process_line(line, config, stretch_factor))
+    for line in base_model.split("\n"):
+        new_line = process_line(line, config, stretch_factor)
+        output.append(new_line)
     return "\n".join(output)
 
 
