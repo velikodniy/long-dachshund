@@ -2,6 +2,7 @@ import argparse
 import dataclasses
 import json
 import pathlib
+import sys
 
 SCRIPT_DIR = pathlib.Path(__file__).parent
 MODEL_CONFIG_FILE = "dachshund.json"
@@ -77,8 +78,12 @@ if __name__ == "__main__":
     config = load_config(SCRIPT_DIR / MODEL_CONFIG_FILE)
     args = parse_args()
     stretch_factor: float = args.stretch
+    base_model_path = SCRIPT_DIR / MODEL_FILE
     output_path: pathlib.Path = args.output
 
-    base_model = (SCRIPT_DIR / MODEL_FILE).read_text()
+    if output_path.absolute() == base_model_path.absolute():
+        sys.exit("Can't overwrite the base model")
+
+    base_model = base_model_path.read_text()
     output_model = make_long_model(base_model, config, stretch_factor)
     output_path.write_text(output_model)
