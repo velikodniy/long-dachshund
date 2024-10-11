@@ -39,21 +39,17 @@ It has enough degrees of freedom to constrain both the points and angles.
 
 To get the coefficients of the cubic polynomial $a x^3 + b x^2 + c x + d$ we have to solve a system of linear equations:
 
-$$
-a x_{min}^3 + b x_{min}^2 + c x_{min} + d = x_{min},\\
-a x_{max}^3 + b x_{max}^2 + c x_{max} + d = s (x_{max} - x_{min}) + x_{min},\\
-3 a x_{min}^2 + 2 b x_{min} + c = 1,\\
-3 a x_{max}^2 + 2 b x_{max} + c = 1.
-$$
+$$a x_\text{min}^3 + b x_\text{min}^2 + c x_\text{min} + d = x_\text{min},$$
+$$a x_\text{max}^3 + b x_\text{max}^2 + c x_\text{max} + d = s (x_\text{max} - x_\text{min}) + x_\text{min},$$
+$$3 a x_\text{min}^2 + 2 b x_\text{min} + c = 1,$$
+$$3 a x_\text{max}^2 + 2 b x_\text{max} + c = 1.$$
 
 This system can be solved in advanced, and the solution is
 
-$$
-a = -\frac{2 (s-1)}{(x_{max}-x_{min})^2},\\
-b = \frac{3 (s-1) (x_{max}+x_{min})}{(x_{max}-x_{min})^2},\\
-c = \frac{(4 - 6 s) x_{max} x_{min} + x_{max}^2 + x_{min}^2}{(x_{max}-x_{min})^2},\\
-d = \frac{(s-1) x_{min}^2 (3 x_{max} - x_{min})}{(x_{max}-x_{min})^2}.
-$$
+$$a = -\frac{2 (s-1)}{(x_\text{max}-x_\text{min})^2},$$
+$$b = \frac{3 (s-1) (x_\text{max}+x_\text{min})}{(x_\text{max}-x_\text{min})^2},$$
+$$c = \frac{(4 - 6 s) x_\text{max} x_\text{min} + x_\text{max}^2 + x_\text{min}^2}{(x_\text{max}-x_\text{min})^2},$$
+$$d = \frac{(s-1) x_\text{min}^2 (3 x_\text{max} - x_\text{min})}{(x_\text{max}-x_\text{min})^2}.$$
 
 The mapping will look like the following.
 
