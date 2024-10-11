@@ -1,5 +1,6 @@
 import argparse
 import dataclasses
+import functools
 import json
 import pathlib
 import sys
@@ -16,6 +17,24 @@ class ModelConfig:
     axis: int
 
 
+@functools.cache
+def get_coeffs(x_min: float, x_max: float, factor: float) -> list[float]:
+    delta = x_max - x_min
+    delta_sqr = delta**2
+    a = -2 * (factor - 1)
+    b = 3 * (factor - 1) * (x_max + x_min)
+    c = x_max**2 + (4 - 6 * factor) * x_min * x_max + x_min**2
+    d = (factor - 1) * (3 * x_max - x_min) * x_min**2
+    return [a / delta_sqr, b / delta_sqr, c / delta_sqr, d / delta_sqr]
+
+
+def poly(coeffs: list[float], x: float) -> float:
+    y = coeffs[0]
+    for c in coeffs[1:]:
+        y = y * x + c
+    return y
+
+
 def map_x(x: float, config: ModelConfig, stretch_factor: float) -> float:
     x_min = config.body_x_min
     x_max = config.body_x_max
@@ -24,7 +43,8 @@ def map_x(x: float, config: ModelConfig, stretch_factor: float) -> float:
         return x
     if x > x_max:
         return x + delta * (stretch_factor - 1)
-    return (x - x_min) * stretch_factor + x_min
+    coeffs = get_coeffs(x_min, x_max, stretch_factor)
+    return poly(coeffs, x)
 
 
 def is_vertex(line: str) -> bool:
