@@ -1,6 +1,6 @@
 # Long Dachshund
 
-A script for creating long dachshund 3D models.
+This script creates long dachshund 3D models and was originally made as a gift for @ewewraw.
 
 ![Long dachshund](images/long-dachshund.png)
 
